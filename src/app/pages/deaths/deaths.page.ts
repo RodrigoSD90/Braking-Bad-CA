@@ -9,22 +9,19 @@ import { ApiService } from '../../services/api.service';
   styleUrls: ['./deaths.page.scss'],
 })
 export class DeathsPage implements OnInit {
-
   deaths: Observable<any>;
-  deathId: Observable<any>;
 
   constructor(private router: Router, private api: ApiService) { }
 
   ngOnInit() {
       this.deaths = this.api.getDeaths();
       this.deaths.subscribe(data => {
-      console.log('my deaths: ', data);
+      console.log('my death: ', data);
     });
   }
 
-  openDetails(character){
-      let deathId = this.deathId;
+  openDetails(deaths){
+      let deathId = deaths.deaths_id;
       this.router.navigateByUrl(`/tabs/deaths/${deathId}`);
   }
-
 }

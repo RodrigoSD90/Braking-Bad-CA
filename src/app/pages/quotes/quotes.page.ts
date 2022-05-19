@@ -9,7 +9,6 @@ import { ApiService } from '../../services/api.service';
   styleUrls: ['./quotes.page.scss'],
 })
 export class QuotesPage implements OnInit {
-
   quotes: Observable<any>;
 
   constructor(private router: Router, private api: ApiService) { }
@@ -20,10 +19,9 @@ export class QuotesPage implements OnInit {
       console.log('my data: ', data);
     });
   }
-
-  openDetails(quote){
-      let quote_author = quote.quote_author;
-      this.router.navigateByUrl(`/tabs/characters/${quote_author}`);
-  }
+  openDetails(quotes){
+    let quoteId = quotes.quote_id;
+    this.router.navigateByUrl(`/tabs/quotes/${quoteId}`);
+}
 
 }
